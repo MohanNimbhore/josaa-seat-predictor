@@ -296,7 +296,7 @@ export default function PredictorForm({ formData, setFormData, onSubmit, isLoadi
             "w-full mt-6 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden",
             isActivated
               ? "bg-[#4f9fd1] hover:bg-[#3787bb] hover:shadow-[0_0_24px_rgba(79,159,209,0.45)] border border-[#a8d8f2]/60"
-              : "bg-slate-500/20 hover:bg-slate-500/30 border border-slate-400/30"
+              : "bg-slate-500/20 hover:bg-[#4f9fd1] hover:border-[#a8d8f2]/60 hover:shadow-[0_0_24px_rgba(79,159,209,0.35)] border border-slate-400/30"
           )}
         >
           <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
