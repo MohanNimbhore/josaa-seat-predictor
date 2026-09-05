@@ -69,7 +69,7 @@ function App() {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.25;
     }
-  }, []);
+  }, [theme]);
 
   useEffect(() => {
     const preloaderTimer = setTimeout(() => {
@@ -152,28 +152,30 @@ function App() {
     <>
       {/* Conditional Background Architecture */}
       {!results ? (
-        <div className="fixed inset-0 w-full h-full bg-[#030303] z-0 pointer-events-none">
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            disablePictureInPicture
-            className="w-full h-full object-cover"
-          >
-            <source src="/bg-video.mp4" type="video/mp4" />
-          </video>
+        <div className="theme-page-background fixed inset-0 w-full h-full bg-[#030303] z-0 pointer-events-none">
+          {theme === 'dark' && (
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              className="w-full h-full object-cover"
+            >
+              <source src="/bg-video.mp4" type="video/mp4" />
+            </video>
+          )}
         </div>
       ) : (
-        <div className="fixed inset-0 w-full h-full bg-black -z-10 overflow-hidden">
+        <div className="theme-results-background fixed inset-0 w-full h-full bg-black -z-10 overflow-hidden">
           {/* The Dot Matrix Grid Layer */}
           <div 
-            className="absolute inset-0 [background-size:20px_20px] [background-image:radial-gradient(#404040_1px,transparent_1px)] opacity-70"
+            className="theme-dot-grid absolute inset-0 [background-size:20px_20px] [background-image:radial-gradient(#404040_1px,transparent_1px)] opacity-70"
           />
           {/* The Faded Vignette Radial Mask Layer to create a premium dark center depth */}
           <div 
-            className="pointer-events-none absolute inset-0 bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+            className="theme-vignette pointer-events-none absolute inset-0 bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
           />
         </div>
       )}

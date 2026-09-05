@@ -46,6 +46,24 @@
   color: var(--light-text);
 }
 
+[data-theme='light'] .theme-page-background {
+  background-color: #edf3ee;
+}
+
+[data-theme='light'] .theme-results-background {
+  background-color: #edf3ee;
+}
+
+[data-theme='light'] .theme-dot-grid {
+  background-image: radial-gradient(rgb(65 93 73 / 0.3) 1px, transparent 1px);
+  opacity: 0.8;
+}
+
+[data-theme='light'] .theme-vignette {
+  background-color: rgb(237 243 238 / 0.72);
+  opacity: 0.55;
+}
+
 [data-theme='light'] .bg-black,
 [data-theme='light'] [class~='bg-[#030303]'] {
   background-color: #e2ece5;
@@ -104,14 +122,43 @@
 [data-theme='light'] .glass-input {
   color: var(--light-text);
   border-color: var(--light-border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+[data-theme='light'] .glass-panel {
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgb(44 76 56 / 0.1);
+}
+
+[data-theme='light'] .glass-card-inner {
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgb(44 76 56 / 0.08);
 }
 
 [data-theme='light'] .glass-input {
-  background-color: var(--light-surface);
+  background-color: #ffffff;
+  color: var(--light-text);
+  caret-color: #2f6b45;
+  -webkit-text-fill-color: var(--light-text);
 }
 
 [data-theme='light'] .glass-input::placeholder {
   color: rgb(82 99 90 / 0.72);
+  -webkit-text-fill-color: rgb(82 99 90 / 0.72);
+}
+
+[data-theme='light'] select.glass-input option,
+[data-theme='light'] select.glass-input option.text-white {
+  background-color: #ffffff;
+  color: var(--light-text);
+}
+
+[data-theme='light'] .glass-input:-webkit-autofill,
+[data-theme='light'] .glass-input:-webkit-autofill:hover,
+[data-theme='light'] .glass-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--light-text);
+  box-shadow: 0 0 0 1000px #ffffff inset;
 }
 
 [data-theme='light'] [class~='text-indigo-300'] {
