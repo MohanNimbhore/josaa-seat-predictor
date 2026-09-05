@@ -27,6 +27,7 @@ const ROUNDS = ['1', '2', '3', '4', '5', '6'];
 
 export default function PredictorForm({ formData, setFormData, onSubmit, isLoading }) {
   const [validationError, setValidationError] = useState('');
+  const [isActivated, setIsActivated] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,6 +70,7 @@ export default function PredictorForm({ formData, setFormData, onSubmit, isLoadi
     }
 
     setFormData(prev => ({ ...prev, name: trimmedName, email: trimmedEmail }));
+    setIsActivated(true);
     onSubmit();
   };
 
@@ -290,9 +292,14 @@ export default function PredictorForm({ formData, setFormData, onSubmit, isLoadi
           whileTap={{ scale: 0.96 }}
           type="submit"
           disabled={isLoading || !formData.rank}
-          className="w-full mt-6 bg-red-500/10 hover:bg-red-600 hover:shadow-[0_0_30px_rgba(220,38,38,0.7)] text-white font-medium py-4 px-6 rounded-xl border border-red-500/30 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden"
+          className={cn(
+            "w-full mt-6 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden",
+            isActivated
+              ? "bg-[#4f9fd1] hover:bg-[#3787bb] hover:shadow-[0_0_24px_rgba(79,159,209,0.45)] border border-[#a8d8f2]/60"
+              : "bg-slate-500/20 hover:bg-slate-500/30 border border-slate-400/30"
+          )}
         >
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-red-400/0 via-red-400/20 to-red-400/0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/0 via-white/15 to-white/0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
           {isLoading ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />

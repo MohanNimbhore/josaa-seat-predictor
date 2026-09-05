@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -10,7 +10,7 @@
 
 @layer base {
   * {
-    font-family: 'JetBrains Mono', monospace !important;
+    font-family: 'Manrope', sans-serif !important;
   }
 
   :root {
@@ -36,9 +36,9 @@
 
 [data-theme='light'] body {
   color-scheme: light;
-  --light-bg: #edf3ee;
+  --light-bg: #f1f5f2;
   --light-surface: rgb(255 255 255 / 0.9);
-  --light-surface-muted: rgb(232 240 234 / 0.88);
+  --light-surface-muted: rgb(235 242 237 / 0.95);
   --light-text: #1d2a22;
   --light-text-muted: #52635a;
   --light-border: rgb(44 76 56 / 0.2);
@@ -47,11 +47,11 @@
 }
 
 [data-theme='light'] .theme-page-background {
-  background-color: #edf3ee;
+  background-color: var(--light-bg);
 }
 
 [data-theme='light'] .theme-results-background {
-  background-color: #edf3ee;
+  background-color: var(--light-bg);
 }
 
 [data-theme='light'] .theme-dot-grid {
@@ -60,7 +60,7 @@
 }
 
 [data-theme='light'] .theme-vignette {
-  background-color: rgb(237 243 238 / 0.72);
+  background-color: rgb(241 245 242 / 0.78);
   opacity: 0.55;
 }
 
@@ -275,4 +275,18 @@
 
 .animate-pulse-subtle {
   animation: pulseSubtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+h1,
+h2,
+h3,
+button,
+input,
+select,
+textarea {
+  letter-spacing: 0;
 }
