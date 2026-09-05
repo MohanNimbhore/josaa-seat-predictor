@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import PredictorForm from './components/PredictorForm';
 import ResultCards from './components/ResultCards';
 import { fetchAndParseCSV, processPredictorData } from './utils/dataProcessor';
-import { GraduationCap, Loader2 } from 'lucide-react';
+import { GraduationCap, Loader2, Moon, Sun } from 'lucide-react';
 
 const PRELOADER_TASKS = [
   "Initializing JoSAA Seat Matrix Database...",
@@ -24,6 +24,7 @@ const paragraph1 = "Navigating JoSAA seat allocation is a complex optimization p
 const paragraph2 = "By calculating your exact rank metrics against modern state quotas, category variables, and institutional filters, the platform renders a streamlined matrix of eligible programs across India's premier IITs, NITs, IIITs, and GFTIs. Built entirely on top of multi-round historical closing rank datasets, this tool delivers crystal-clear tracking metrics, replacing guesswork with pure analytical certainty during your choice-filling window.";
 
 function App() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('josaa-theme') || 'dark');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,6 +52,11 @@ function App() {
   const videoRef = useRef(null);
   const calcTimeoutRef = useRef(null);
   const calcIntervalRef = useRef(null);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('josaa-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     return () => {
@@ -269,6 +275,16 @@ function App() {
         </div>
         <h1 className="text-xl font-bold tracking-tight text-white drop-shadow-md">JoSSA SEAT PREDICTOR 2025-26</h1>
       </div>
+
+      <button
+        type="button"
+        onClick={() => setTheme(currentTheme => currentTheme === 'dark' ? 'light' : 'dark')}
+        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+        title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+        className="fixed top-6 right-6 z-40 flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-amber-400/70"
+      >
+        {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      </button>
 
       <main className={
         !results 
